@@ -1,20 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project | Random Color Generator</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="icon" href="asset/favicon.ico" type="image/png" />
-  </head>
-
-  <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Color Generator | Beautiful Colors</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
     <div class="container">
-      <div class="heading"><h1>Generating Random Color...</h1></div>
-      <div class="loading" id="loading"></div>
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-palette"></i>
+                <h1>Color Palette Generator</h1>
+            </div>
+            <p class="tagline">Discover beautiful random colors with their codes</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Color Display Area -->
+            <div class="color-display-section">
+                <div class="current-color-container">
+                    <div class="color-display" id="colorDisplay"></div>
+                    <div class="color-info">
+                        <div class="color-code">
+                            <span class="code-label">HEX</span>
+                            <div class="code-value" id="hexCode">#FFFFFF</div>
+                            <button class="copy-btn" id="copyHex" title="Copy HEX">
+                                <i class="far fa-copy"></i>
+                            </button>
+                        </div>
+                        <div class="color-code">
+                            <span class="code-label">RGB</span>
+                            <div class="code-value" id="rgbCode">rgb(255, 255, 255)</div>
+                            <button class="copy-btn" id="copyRgb" title="Copy RGB">
+                                <i class="far fa-copy"></i>
+                            </button>
+                        </div>
+                        <div class="color-code">
+                            <span class="code-label">HSL</span>
+                            <div class="code-value" id="hslCode">hsl(0, 0%, 100%)</div>
+                            <button class="copy-btn" id="copyHsl" title="Copy HSL">
+                                <i class="far fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Color Details -->
+                <div class="color-details">
+                    <div class="detail-card">
+                        <h3><i class="fas fa-info-circle"></i> Color Information</h3>
+                        <div class="detail-item">
+                            <span>Luminance:</span>
+                            <span id="luminanceValue">100%</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>Saturation:</span>
+                            <span id="saturationValue">0%</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>Hue:</span>
+                            <span id="hueValue">0°</span>
+                        </div>
+                        <div class="color-type">
+                            <span>Type:</span>
+                            <span class="type-badge" id="colorType">Light</span>
+                        </div>
+                    </div>
+
+                    <div class="contrast-card">
+                        <h3><i class="fas fa-eye"></i> Contrast Check</h3>
+                        <div class="contrast-samples">
+                            <div class="contrast-sample" id="blackText">
+                                <span>Black Text</span>
+                                <span class="contrast-ratio" id="blackContrast">21.0</span>
+                            </div>
+                            <div class="contrast-sample" id="whiteText">
+                                <span>White Text</span>
+                                <span class="contrast-ratio" id="whiteContrast">21.0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controls Section -->
+            <div class="controls-section">
+                <div class="control-group">
+                    <button class="btn btn-primary" id="generateBtn">
+                        <i class="fas fa-random"></i> Generate Random Color
+                    </button>
+                    <button class="btn btn-secondary" id="toggleAutoBtn">
+                        <i class="fas fa-play"></i> Auto Mode
+                    </button>
+                </div>
+
+                <div class="control-group">
+                    <div class="slider-group">
+                        <label for="intervalSlider">
+                            <i class="fas fa-tachometer-alt"></i> Speed: 
+                            <span id="intervalValue">3</span>s
+                        </label>
+                        <input type="range" id="intervalSlider" min="1" max="10" value="3" class="slider">
+                    </div>
+
+                    <div class="color-format">
+                        <label>Display Format:</label>
+                        <div class="format-options">
+                            <button class="format-option active" data-format="hex">HEX</button>
+                            <button class="format-option" data-format="rgb">RGB</button>
+                            <button class="format-option" data-format="hsl">HSL</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Preset Colors -->
+                <div class="preset-colors">
+                    <h3><i class="fas fa-star"></i> Popular Colors</h3>
+                    <div class="preset-grid" id="presetGrid">
+                        <!-- Preset colors will be added dynamically -->
+                    </div>
+                </div>
+
+                <!-- Recent Colors -->
+                <div class="recent-colors">
+                    <div class="recent-header">
+                        <h3><i class="fas fa-history"></i> Recent Colors</h3>
+                        <button class="btn-small" id="clearHistory">
+                            <i class="fas fa-trash"></i> Clear
+                        </button>
+                    </div>
+                    <div class="recent-grid" id="recentGrid">
+                        <!-- Recent colors will be added dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Color History -->
+            <div class="history-section">
+                <h2><i class="fas fa-chart-bar"></i> Color Palette History</h2>
+                <div class="history-grid" id="historyGrid">
+                    <!-- History items will be added dynamically -->
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p>
+                    Made with <i class="fas fa-heart" style="color: #e74c3c;"></i> 
+                    by Color Studio | 
+                    <span id="generatedCount">0</span> colors generated
+                </p>
+                <div class="footer-links">
+                    <a href="#" id="exportBtn"><i class="fas fa-download"></i> Export Palette</a>
+                    <a href="#" id="shareBtn"><i class="fas fa-share-alt"></i> Share</a>
+                    <a href="#" id="aboutBtn"><i class="fas fa-info-circle"></i> About</a>
+                </div>
+            </div>
+        </footer>
     </div>
 
-    <script src="index.js"></script>
-  </body>
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <div class="notification-content">
+            <i class="fas fa-check-circle"></i>
+            <span id="notificationText">Color copied to clipboard!</span>
+        </div>
+    </div>
+
+    <!-- About Modal -->
+    <div class="modal" id="aboutModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>About Color Generator</h2>
+                <button class="close-modal" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>This tool generates random colors with their HEX, RGB, and HSL values. You can:</p>
+                <ul>
+                    <li>Generate random colors manually or automatically</li>
+                    <li>Copy color codes in different formats</li>
+                    <li>Save favorite colors</li>
+                    <li>Check contrast ratios for accessibility</li>
+                    <li>Export your color palette</li>
+                </ul>
+                <p>Perfect for designers, developers, and artists!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="js/colorUtils.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/stateManager.js"></script>
+    <script src="js/index.js"></script>
+</body>
 </html>
-<!-- <button class="btn" id="color">Generate Random Color</button> -->

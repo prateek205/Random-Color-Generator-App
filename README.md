@@ -31,11 +31,14 @@ URL:
 .
 ├── Random-Color-Generator-App
 ├── .git
+├── javascript/
+│   ├── index.js
+│   ├── colorUtils.js
+│   ├── stateManager.js
+│   └── utils.js
 ├── index.html
 ├── style.css
-├── index.js
 └── README.md
-
 ```
 
 ## ⚙️ How It Works
