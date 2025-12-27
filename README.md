@@ -22,7 +22,7 @@ This application generates a random RGB color on every click and displays both t
 
 ## 📺 Live Demo
 
-URL: 
+URL: https://random-color-generator-app-nine.vercel.app/ 
 
 
 ## 📂 Project Structure
