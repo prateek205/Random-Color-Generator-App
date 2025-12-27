@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Random Color Generator | Beautiful Colors</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎨</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
@@ -31,21 +31,21 @@
                     <div class="color-info">
                         <div class="color-code">
                             <span class="code-label">HEX</span>
-                            <div class="code-value" id="hexCode">#FFFFFF</div>
+                            <div class="code-value" id="hexCode">#3498db</div>
                             <button class="copy-btn" id="copyHex" title="Copy HEX">
                                 <i class="far fa-copy"></i>
                             </button>
                         </div>
                         <div class="color-code">
                             <span class="code-label">RGB</span>
-                            <div class="code-value" id="rgbCode">rgb(255, 255, 255)</div>
+                            <div class="code-value" id="rgbCode">rgb(52, 152, 219)</div>
                             <button class="copy-btn" id="copyRgb" title="Copy RGB">
                                 <i class="far fa-copy"></i>
                             </button>
                         </div>
                         <div class="color-code">
                             <span class="code-label">HSL</span>
-                            <div class="code-value" id="hslCode">hsl(0, 0%, 100%)</div>
+                            <div class="code-value" id="hslCode">hsl(204, 70%, 53%)</div>
                             <button class="copy-btn" id="copyHsl" title="Copy HSL">
                                 <i class="far fa-copy"></i>
                             </button>
@@ -59,15 +59,15 @@
                         <h3><i class="fas fa-info-circle"></i> Color Information</h3>
                         <div class="detail-item">
                             <span>Luminance:</span>
-                            <span id="luminanceValue">100%</span>
+                            <span id="luminanceValue">39%</span>
                         </div>
                         <div class="detail-item">
                             <span>Saturation:</span>
-                            <span id="saturationValue">0%</span>
+                            <span id="saturationValue">70%</span>
                         </div>
                         <div class="detail-item">
                             <span>Hue:</span>
-                            <span id="hueValue">0°</span>
+                            <span id="hueValue">204°</span>
                         </div>
                         <div class="color-type">
                             <span>Type:</span>
@@ -80,11 +80,11 @@
                         <div class="contrast-samples">
                             <div class="contrast-sample" id="blackText">
                                 <span>Black Text</span>
-                                <span class="contrast-ratio" id="blackContrast">21.0</span>
+                                <span class="contrast-ratio" id="blackContrast">4.5</span>
                             </div>
                             <div class="contrast-sample" id="whiteText">
                                 <span>White Text</span>
-                                <span class="contrast-ratio" id="whiteContrast">21.0</span>
+                                <span class="contrast-ratio" id="whiteContrast">4.5</span>
                             </div>
                         </div>
                     </div>
@@ -109,15 +109,6 @@
                             <span id="intervalValue">3</span>s
                         </label>
                         <input type="range" id="intervalSlider" min="1" max="10" value="3" class="slider">
-                    </div>
-
-                    <div class="color-format">
-                        <label>Display Format:</label>
-                        <div class="format-options">
-                            <button class="format-option active" data-format="hex">HEX</button>
-                            <button class="format-option" data-format="rgb">RGB</button>
-                            <button class="format-option" data-format="hsl">HSL</button>
-                        </div>
                     </div>
                 </div>
 
@@ -161,9 +152,8 @@
                     <span id="generatedCount">0</span> colors generated
                 </p>
                 <div class="footer-links">
-                    <a href="#" id="exportBtn"><i class="fas fa-download"></i> Export Palette</a>
-                    <a href="#" id="shareBtn"><i class="fas fa-share-alt"></i> Share</a>
-                    <a href="#" id="aboutBtn"><i class="fas fa-info-circle"></i> About</a>
+                    <button class="footer-link" id="exportBtn"><i class="fas fa-download"></i> Export</button>
+                    <button class="footer-link" id="shareBtn"><i class="fas fa-share-alt"></i> Share</button>
                 </div>
             </div>
         </footer>
@@ -177,31 +167,7 @@
         </div>
     </div>
 
-    <!-- About Modal -->
-    <div class="modal" id="aboutModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>About Color Generator</h2>
-                <button class="close-modal" id="closeModal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <p>This tool generates random colors with their HEX, RGB, and HSL values. You can:</p>
-                <ul>
-                    <li>Generate random colors manually or automatically</li>
-                    <li>Copy color codes in different formats</li>
-                    <li>Save favorite colors</li>
-                    <li>Check contrast ratios for accessibility</li>
-                    <li>Export your color palette</li>
-                </ul>
-                <p>Perfect for designers, developers, and artists!</p>
-            </div>
-        </div>
-    </div>
-
     <!-- JavaScript Files -->
-    <script src="js/colorUtils.js"></script>
-    <script src="js/utils.js"></script>
-    <script src="js/stateManager.js"></script>
-    <script src="js/index.js"></script>
+    <script src="index.js" defer></script>
 </body>
 </html>
